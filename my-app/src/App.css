@@ -1,0 +1,45 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.video-container {
+  flex: 3;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.transcript-container {
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.ai-assistant-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  height: 200px;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transcript-content {
+  height: calc(100% - 40px);
+}
+
+.video-component video {
+  width: 100%;
+  height: auto;
+}
+
+.ai-assistant-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
