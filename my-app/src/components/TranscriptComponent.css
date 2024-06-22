@@ -8,14 +8,14 @@
     border-radius: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .transcript-component h2 {
+}
+
+.transcript-component h2 {
     text-align: center;
     color: #333;
-  }
-  
- /* Custom scrollbar for Webkit browsers (Chrome, Safari) */
+}
+
+/* Custom scrollbar for Webkit browsers (Chrome, Safari) */
 .transcript-content {
     margin-top: 20px;
     max-height: 400px;
@@ -24,38 +24,36 @@
     overflow-y: scroll; /* Enable scrolling */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-  }
-  
-  .transcript-content::-webkit-scrollbar {
+}
+
+.transcript-content::-webkit-scrollbar {
     width: 8px; /* Adjust the width as needed */
-  }
-  
-  .transcript-content::-webkit-scrollbar-track {
+}
+
+.transcript-content::-webkit-scrollbar-track {
     background: transparent;
-  }
-  
-  .transcript-content::-webkit-scrollbar-thumb {
+}
+
+.transcript-content::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2); /* Scrollbar color */
     border-radius: 4px;
-  }
-  
-  .transcript-content::-webkit-scrollbar-thumb:hover {
+}
+
+.transcript-content::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.4);
-  }
-  
-  .transcript-content::-webkit-scrollbar-thumb:active {
+}
+
+.transcript-content::-webkit-scrollbar-thumb:active {
     background: rgba(0, 0, 0, 0.6);
-  }
-  
-  /* Hide scrollbar for Firefox */
-  .transcript-content {
+}
+
+/* Hide scrollbar for Firefox */
+.transcript-content {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-  }
-  
-  
-  
-  .message {
+}
+
+.message {
     padding: 10px 15px;
     border-radius: 20px;
     margin-bottom: 10px;
@@ -65,26 +63,26 @@
     animation: fadeIn 0.5s forwards;
     display: flex;
     align-items: center;
-  }
-  
-  .message-icon {
+}
+
+.message-icon {
     margin-right: 25px;
     font-size: 1.2em;
-  }
-  
-  .AI {
-    background-color: #e1ffc7;
+}
+
+.AI {
+    background-color: #449bca;
     align-self: flex-start;
     text-align: left;
-  }
-  
-  .User {
-    background-color: #d2e0ff;
+}
+
+.User {
+    background-color: #dcdcdc;
     align-self: flex-end;
     text-align: left;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(10px);
@@ -93,15 +91,15 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-  
-  .buttons {
+}
+
+.buttons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  
-  .buttons button {
+}
+
+.buttons button {
     margin: 0 10px;
     padding: 10px 20px;
     border: none;
@@ -110,9 +108,8 @@
     background-color: #007bff;
     color: white;
     font-size: 16px;
-  }
-  
-  .buttons button:hover {
+}
+
+.buttons button:hover {
     background-color: #0056b3;
-  }
-  
+}
