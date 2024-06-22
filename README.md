@@ -1,2 +1,2 @@
 # varsity-interviews
-a nice interview platform!
+interviewing made easy
