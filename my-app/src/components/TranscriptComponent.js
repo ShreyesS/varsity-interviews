@@ -14,17 +14,12 @@ const initialChatData = [
 const TranscriptComponent = () => {
   const [chatData, setChatData] = useState(initialChatData);
   const transcriptContentRef = useRef(null);
-  const userScrolling = useRef(false);
-
-  const handleScroll = () => {
-    const { scrollTop, scrollHeight, clientHeight } = transcriptContentRef.current;
-    userScrolling.current = !(scrollHeight - scrollTop === clientHeight);
-  };
 
   useEffect(() => {
-    if (!userScrolling.current) {
-      transcriptContentRef.current.scrollTop = transcriptContentRef.current.scrollHeight;
-    }
+    const scrollHeight = transcriptContentRef.current.scrollHeight;
+    const height = transcriptContentRef.current.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    transcriptContentRef.current.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }, [chatData]);
 
   const addMessage = (sender) => {
@@ -34,11 +29,7 @@ const TranscriptComponent = () => {
   return (
     <div className="transcript-component">
       <h2>Live Transcript</h2>
-      <div
-        className="transcript-content"
-        ref={transcriptContentRef}
-        onScroll={handleScroll}
-      >
+      <div className="transcript-content" ref={transcriptContentRef}>
         {chatData.map((chat, index) => (
           <MessageComponent key={index} sender={chat.sender} text={chat.text} />
         ))}

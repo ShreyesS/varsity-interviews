@@ -1,9 +1,9 @@
 .transcript-component {
     font-family: Arial, sans-serif;
     width: auto;
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #f9f9f9;
@@ -15,13 +15,45 @@
     color: #333;
   }
   
-  .transcript-content {
+ /* Custom scrollbar for Webkit browsers (Chrome, Safari) */
+.transcript-content {
     margin-top: 20px;
-    overflow-y: auto;
     max-height: 400px;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll; /* Enable scrolling */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
   }
+  
+  .transcript-content::-webkit-scrollbar {
+    width: 8px; /* Adjust the width as needed */
+  }
+  
+  .transcript-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .transcript-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Scrollbar color */
+    border-radius: 4px;
+  }
+  
+  .transcript-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .transcript-content::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Hide scrollbar for Firefox */
+  .transcript-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+  
+  
   
   .message {
     padding: 10px 15px;
@@ -36,9 +68,8 @@
   }
   
   .message-icon {
-    margin-right: 10px;
+    margin-right: 25px;
     font-size: 1.2em;
-    font-weight: bold;
   }
   
   .AI {
@@ -50,7 +81,7 @@
   .User {
     background-color: #d2e0ff;
     align-self: flex-end;
-    text-align: right;
+    text-align: left;
   }
   
   @keyframes fadeIn {
