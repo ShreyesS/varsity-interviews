@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ChatStage from '@components/ChatStage';
 import VideoComponent from './components-2/VideoComponent';
 import TranscriptComponent from './components-2/TranscriptComponent';
+import ExpandableComponent from './components-2/ExpandableComponent';
 import './App.css';
 
 interface Message {
@@ -11,12 +12,10 @@ interface Message {
   content: string;
 }
 
-// Assuming there's a function to analyze sentiment from the Hume SDK
-
 function App() {
   const [accessToken, setAccessToken] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
-  const [chatEnded, setChatEnded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -46,30 +45,26 @@ function App() {
     }
   };
 
-  const handleEndChat = () => {
-    setMessages([]);
-    setChatEnded(true);
-  };
-
   return (
     <VoiceProvider
       auth={{ type: 'accessToken', value: accessToken }}
       configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'}
       onMessage={handleMessage}
     >
-      <div className={`container ${chatEnded ? 'full-screen' : ''}`}>
-        <div className={`left ${chatEnded ? 'fade-out' : ''}`}>
+      <div className="container">
+        <div className="left">
           <div className="video-container">
             <VideoComponent />
           </div>
           <div className="chat-stage">
-            <ChatStage onEndChat={handleEndChat} />
+            <ChatStage setIsExpanded={setIsExpanded} />
           </div>
         </div>
-        <div className={`right ${chatEnded ? 'expanded' : ''}`}>
+        <div className="right">
           <TranscriptComponent messages={messages} />
         </div>
       </div>
+      <ExpandableComponent isExpanded={isExpanded} />
     </VoiceProvider>
   );
 }

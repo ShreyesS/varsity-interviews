@@ -5,15 +5,20 @@ import React from 'react';
 import { match } from 'ts-pattern';
 import './ChatStage.css'; // Import the CSS file
 
+interface ChatStageProps {
+  setIsExpanded: (isExpanded: boolean) => void;
+}
+
 /**
  * Main view for displaying the avatars and conversation
  */
-const ChatStage: React.FC = () => {
+const ChatStage: React.FC<ChatStageProps> = ({ setIsExpanded }) => {
   const { connect, disconnect, status } = useVoice();
 
   const handleConnect = () => {
     if (status.value === 'connected') {
       disconnect();
+      setIsExpanded(true);
       return;
     }
     void connect()
