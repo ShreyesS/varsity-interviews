@@ -1,25 +1,30 @@
 .expandable-container {
-  position: relative;
-  width: 100%;
-  height: 100px; /* Initial size same as text area */
+  position: absolute;
+  width: 100px; /* Initial size */
+  height: 100px; /* Initial size */
+  padding: 20px; /* Adjust padding for better initial fit */
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: all 0.5s ease-in-out;
+  border-radius: 15px;
   overflow: hidden;
   visibility: hidden; /* Hide the container by default */
   opacity: 0;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center by translating 50% of its own width and height */
 }
 
 .expandable-container.expanded {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  position: fixed; /* Change to fixed when expanded */
+  width: 90%; /* Expand to 90% of the screen */
+  height: 90vh; /* Expand to 90% of the viewport height */
   z-index: 9999;
   visibility: visible; /* Show the container when expanded */
   opacity: 1;
+  top: 50%; /* Keep centered vertically */
+  left: 50%; /* Keep centered horizontally */
+  transform: translate(-50%, -50%); /* Center by translating 50% of its own width and height */
+  transition: all 1s ease-in-out; /* Transition for all properties */
 }
 
 .expandable-content {
@@ -28,31 +33,12 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%; /* Ensure content takes full width */
 }
 
-.fade-in {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out, visibility 0s;
-}
-
-.fade-out {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
-}
-
-.expandable-container {
-  transition: all 0.3s ease;
-}
-
-.fade-in {
-  opacity: 1;
-}
-
-.expandable-content {
-  padding: 20px;
-  background-color: #f1f1f1;
+.transcript-component {
+  position: relative; /* Needed to get position for matching */
+  z-index: 1;
 }
 
 .quadrants {
@@ -60,7 +46,10 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
-  height: 100%;
+  width: 95%; /* Reduce width by 15% */
+  height: 95%; /* Reduce height by 15% */
+  padding: 20px; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding in height and width */
 }
 
 .quadrant {
@@ -69,10 +58,14 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 15px; /* Adjust padding for better fit */
+  border-radius: 10px; /* Add rounded edges */
+  width: 90%; /* Ensure quadrants take full width */
+  height: 90%; /* Ensure quadrants take full height */
 }
 
 .donut-chart {
-  width: 100%;
+  width: 75%; /* Reduce chart size by 15% */
+  height: 65%; /* Reduce chart size by 15% */
   text-align: center;
 }

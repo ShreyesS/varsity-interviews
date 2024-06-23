@@ -21,6 +21,8 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [userScores, setUserScores] = useState<Score[]>([]);
+  const [isFading, setIsFading] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -37,7 +39,13 @@ function App() {
 
   useEffect(() => {
     if (isExpanded) {
-      sendToOpenAI();
+      setIsFading(true);
+      setTimeout(() => {
+        setIsFading(false);
+        setIsHidden(true);
+      }, 1000);
+    } else {
+      setIsHidden(false);
     }
   }, [isExpanded]);
 
@@ -53,7 +61,7 @@ function App() {
           'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`, // Ensure the API key is correct
         },
         body: JSON.stringify({
-          model: 'gpt-4o',
+          model: 'gpt-4',
           prompt: prompt,
           max_tokens: 50,
         }),
@@ -130,7 +138,7 @@ function App() {
       configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'}
       onMessage={handleMessage}
     >
-      <div className="container">
+      <div className={`container ${isFading ? 'fade-out' : 'fade-in'} ${isHidden ? 'hidden' : ''}`}>
         <div className="left">
           <div className="video-container">
             <VideoComponent />
@@ -145,10 +153,9 @@ function App() {
         <div>
           <h3>User Scores</h3>
           <pre>{JSON.stringify(userScores, null, 2)}</pre>
+        </div>
       </div>
-      </div>
-      <ExpandableComponent isExpanded={isExpanded} />
-      
+      <ExpandableComponent isExpanded={isExpanded && !isFading} />
     </VoiceProvider>
   );
 }

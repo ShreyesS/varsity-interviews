@@ -1,0 +1,19 @@
+.donut-chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure even spacing between items */
+    padding: 0 20px; /* Add padding to the container */
+  }
+  
+  .chart {
+    flex: 1; /* Allow the chart to take up available space */
+    padding-right: 20px; /* Add padding to the right of the chart */
+    max-width: 65%; /* Reduce the size of the chart by 20% */
+  }
+  
+  .chart-title {
+    flex: 0 0 30%; /* Ensure the title takes up 30% of the space */
+    text-align: left;
+    padding-left: 20px; /* Add padding to the left of the text */
+  }
+  

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './ExpandableComponent.css';
 import DonutChart from './DonutChart';
 import {
@@ -49,9 +49,9 @@ const ExpandableComponent: React.FC<ExpandableComponentProps> = ({ isExpanded })
 
   useEffect(() => {
     if (isExpanded) {
-      document.querySelector('.expandable-container')?.classList.add('fade-in');
+      document.querySelector('.expandable-container')?.classList.add('expanded');
     } else {
-      document.querySelector('.expandable-container')?.classList.remove('fade-in');
+      document.querySelector('.expandable-container')?.classList.remove('expanded');
     }
   }, [isExpanded]);
 
@@ -59,7 +59,6 @@ const ExpandableComponent: React.FC<ExpandableComponentProps> = ({ isExpanded })
     <div className={`expandable-container ${isExpanded ? 'expanded' : ''}`}>
       <div className="expandable-content">
         <h2>Expandable Component</h2>
-        <p>{isExpanded ? "Expanded!" : "Click to expand"}</p>
         <div className="quadrants">
           <div className="quadrant">
             <DonutChart data={data1} title="Category 1" />

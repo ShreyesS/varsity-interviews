@@ -81,3 +81,20 @@ html, body {
 .message.AI {
   background-color: #e2e3e5;
 }
+
+.container.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.container.hidden {
+  display: none;
+}
+
+.container.fade-in {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+
+

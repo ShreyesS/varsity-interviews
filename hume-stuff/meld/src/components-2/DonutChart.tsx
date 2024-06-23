@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import './DonutChart.css';
 
 interface DonutChartProps {
   data: any;
@@ -30,9 +31,13 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, title }) => {
   };
 
   return (
-    <div className="donut-chart">
-      <h3>{title}</h3>
-      <Doughnut data={chartData} options={options} />
+    <div className="donut-chart-container">
+      <div className="chart">
+        <Doughnut data={chartData} options={options} />
+      </div>
+      <div className="chart-title">
+        <h3>{title}</h3>
+      </div>
     </div>
   );
 };
