@@ -19,7 +19,6 @@
 /* Custom scrollbar for Webkit browsers (Chrome, Safari) */
 .transcript-content {
     margin-top: 20px;
-    max-height: 400px;
     display: flex;
     flex-direction: column;
     overflow-y: scroll; /* Enable scrolling */
