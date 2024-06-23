@@ -16,7 +16,9 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, title }) => {
       datasets: data.datasets.map((dataset: any) => ({
         ...dataset,
         borderRadius: 10, // Rounded edges
-        borderWidth: 2 // Adjust border width as needed
+        borderWidth: 2, // Adjust border width as needed
+        rotation: -90, // Start rotation at top
+        circumference: 360, // Full circle
       }))
     };
     setChartData(modifiedData);
@@ -26,8 +28,10 @@ const DonutChart: React.FC<DonutChartProps> = ({ data, title }) => {
     plugins: {
       legend: {
         display: false, // Disable the legend
-      }
-    }
+      },
+    },
+    rotation: -90, // Rotate the chart to start at the top
+    circumference: 360, // Full circle
   };
 
   return (

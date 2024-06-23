@@ -85,16 +85,17 @@ html, body {
 .container.fade-out {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-}
-
-.container.hidden {
-  display: none;
+  pointer-events: none; /* Prevent interaction */
 }
 
 .container.fade-in {
   opacity: 1;
   transition: opacity 1s ease-in-out;
+  pointer-events: auto; /* Allow interaction */
 }
 
+.container.hidden {
+  display: none;
+}
 
 

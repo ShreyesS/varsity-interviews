@@ -97,7 +97,7 @@ const LiveAudioWaveform: React.FC = () => {
         };
 
         window.addEventListener('click', handleUserGesture);
-        window.addEventListener('touchstart', handleUserGesture);
+        window.addEventListener('start', handleUserGesture);
 
         return () => {
             if (animationFrameRef.current) {
