@@ -1,7 +1,8 @@
 .transcript-component {
     font-family: Arial, sans-serif;
-    width: auto;
-    max-width: 450px;
+    width: 100%;
+    max-width: 500px;
+    height: 1000px;
     margin: 0 auto;
     padding: 50px;
     border: 1px solid #ddd;

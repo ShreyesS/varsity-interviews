@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-const VideoComponent = () => {
-  const [stream, setStream] = useState(null);
-  const mediaRecorderRef = useRef(null);
+const VideoComponent: React.FC = () => {
+  const [stream, setStream] = useState<MediaStream | null>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const [isRecording, setIsRecording] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const getMediaStream = async () => {
@@ -23,6 +24,12 @@ const VideoComponent = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+    }
+  }, [stream]);
 
   const startRecording = () => {
     if (stream) {
@@ -44,7 +51,7 @@ const VideoComponent = () => {
     }
   };
 
-  const handleDataAvailable = (event) => {
+  const handleDataAvailable = (event: BlobEvent) => {
     if (event.data.size > 0) {
       // Handle the recorded data
       console.log('Recorded data available:', event.data);
@@ -52,12 +59,12 @@ const VideoComponent = () => {
   };
 
   return (
-    <div>
-      <video autoPlay muted ref={(video) => {
-        if (video && stream) {
-          video.srcObject = stream;
-        }
-      }}></video>
+    <div className="video-container">
+      <video
+        autoPlay
+        muted
+        ref={videoRef}
+      ></video>
     </div>
   );
 };

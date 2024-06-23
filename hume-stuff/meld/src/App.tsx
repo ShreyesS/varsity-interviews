@@ -2,13 +2,21 @@ import { fetchAccessToken } from '@humeai/voice';
 import { VoiceProvider } from '@humeai/voice-react';
 import { useEffect, useState } from 'react';
 import ChatStage from '@components/ChatStage';
+import VideoComponent from './components-2/VideoComponent';
+import TranscriptComponent from './components-2/TranscriptComponent';
+import './App.css'
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
 function App() {
-  const [accessToken, setAccessToken] = useState('');
+  const [accessToken, setAccessToken] = useState<string>('');
+  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     const fetchToken = async () => {
-      // make sure to set these environment variables
       const apiKey = import.meta.env.VITE_HUME_API_KEY || '';
       const secretKey = import.meta.env.VITE_HUME_SECRET_KEY || '';
 
@@ -20,15 +28,41 @@ function App() {
     fetchToken();
   }, []);
 
+  const handleMessage = (message: any) => {
+    switch (message.type) {
+      case 'user_message':
+      case 'assistant_message':
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: message.message.role, content: message.message.content },
+        ]);
+        console.log(`${message.message.role}: `, message.message.content);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <>
-      <VoiceProvider
-        auth={{ type: 'accessToken', value: accessToken }}
-        configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'} // set your configId here
-      >
-        <ChatStage />
-      </VoiceProvider>
-    </>
+    <VoiceProvider
+      auth={{ type: 'accessToken', value: accessToken }}
+      configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'}
+      onMessage={handleMessage}
+    >
+      <div className="container">
+        <div className="left">
+          <div className="video-container">
+            <VideoComponent />
+          </div>
+          <div className="chat-stage">
+            <ChatStage />
+          </div>
+        </div>
+        <div className="right">
+          <TranscriptComponent messages={messages} />
+        </div>
+      </div>
+    </VoiceProvider>
   );
 }
 

@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    background-color: #f0f4f8; /* Light grey background */
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    padding: 20px;
+  }
+  
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    padding: 20px;
+  }
+  
+  .video-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Limit the max width for better centering */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .video-container video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  
+  .chat-button {
+    width: 12rem;
+    background-color: #809eeb; /* Stripe button color */
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    font-size: 1.25rem;
+    transition: background-color 0.1s, transform 0.1s;
+    cursor: pointer;
+  }
+  
+  .chat-button:hover {
+    background-color: #6f8acf; /* Darker shade of the button color */
+    transform: scale(1.05); /* Slightly enlarge the button */
+  }
+  
+  .chat-button:active {
+    background-color: #5a6fa4; /* Even darker shade for active state */
+  }
+  
+  .chat-stage {
+    flex: 1;
+    max-width: 600px; /* Limit the max width for better centering */
+    margin-bottom: 20px;
+  }
+  
+  .transcript-component {
+    background-color: #ffffff;
+    border-radius: 8px; /* Reduced border radius for a modern look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px;
+  }
+  
+  .transcript-content {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .message.User {
+    background-color: #d1e7ff;
+  }
+  
+  .message.AI {
+    background-color: #e2e3e5;
+  }
+  
+  /* Typography and colors */
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333333;
+  }
+  
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  

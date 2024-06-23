@@ -3,6 +3,7 @@ import { useVoice } from '@humeai/voice-react';
 import { AvatarProvider } from '@store/AvatarProvider';
 import React from 'react';
 import { match } from 'ts-pattern';
+import './ChatStage.css'; // Import the CSS file
 
 /**
  * Main view for displaying the avatars and conversation
@@ -24,7 +25,6 @@ const ChatStage: React.FC = () => {
 
   return (
     <div className="font-nationalPark absolute inset-0 size-full bg-blue-50 flex flex-col justify-center items-center">
-      <h1 className="absolute top-6 text-4xl font-bold">MindMeld</h1>
       <div>
         {match(status.value)
           .with('error', () => {
@@ -40,16 +40,14 @@ const ChatStage: React.FC = () => {
           })
           .with('connected', () => {
             return (
-              <AvatarProvider>
-                <Avatars />
-              </AvatarProvider>
+              <div></div>
             );
           })
           .exhaustive()}
       </div>
       <button
         onClick={() => handleConnect()}
-        className="absolute bottom-12 w-48 bg-blue-200 px-6 py-4 rounded-full 9 font-bold border-4 border-black text-xl hover:bg-blue-200/60 transition"
+        className="chat-button"
       >
         {status.value === 'connected' ? 'End chat' : 'Start chat!'}
       </button>
