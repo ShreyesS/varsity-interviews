@@ -8,7 +8,9 @@ interface ExpandableComponentProps {
 const ExpandableComponent: React.FC<ExpandableComponentProps> = ({ isExpanded }) => {
   useEffect(() => {
     if (isExpanded) {
-      document.querySelector('.container')?.classList.add('fade-out');
+      document.querySelector('.expandable-container')?.classList.add('fade-in');
+    } else {
+      document.querySelector('.expandable-container')?.classList.remove('fade-in');
     }
   }, [isExpanded]);
 
