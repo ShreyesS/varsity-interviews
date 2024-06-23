@@ -48,7 +48,7 @@ function App() {
   return (
     <VoiceProvider
       auth={{ type: 'accessToken', value: accessToken }}
-      configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'}
+      configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'} // set your configId here
       onMessage={handleMessage}
     >
       <div className="container">
