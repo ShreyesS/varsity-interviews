@@ -8,9 +8,9 @@ interface MessageComponentProps {
 const MessageComponent: React.FC<MessageComponentProps> = ({ sender, text }) => {
   const isAI = sender === 'assistant';
   
-  // Function to replace "### Question X." with "Question X." for any number X
+  // Function to remove the specified characters
   const cleanText = (text: string) => {
-    return text.replace(/### Question (\d+)\./, 'Question $1.').trim();
+    return text.replace("### Question 3.", "").trim();
   };
 
   return (

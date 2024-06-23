@@ -4,16 +4,19 @@ import { useEffect, useState } from 'react';
 import ChatStage from '@components/ChatStage';
 import VideoComponent from './components-2/VideoComponent';
 import TranscriptComponent from './components-2/TranscriptComponent';
-import './App.css'
+import './App.css';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
 }
 
+// Assuming there's a function to analyze sentiment from the Hume SDK
+
 function App() {
   const [accessToken, setAccessToken] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
+  const [chatEnded, setChatEnded] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -28,7 +31,7 @@ function App() {
     fetchToken();
   }, []);
 
-  const handleMessage = (message: any) => {
+  const handleMessage = async (message: any) => {
     switch (message.type) {
       case 'user_message':
       case 'assistant_message':
@@ -43,22 +46,27 @@ function App() {
     }
   };
 
+  const handleEndChat = () => {
+    setMessages([]);
+    setChatEnded(true);
+  };
+
   return (
     <VoiceProvider
       auth={{ type: 'accessToken', value: accessToken }}
       configId={'d1955c72-4f15-4ac2-b98a-5232dec4180c'}
       onMessage={handleMessage}
     >
-      <div className="container">
-        <div className="left">
+      <div className={`container ${chatEnded ? 'full-screen' : ''}`}>
+        <div className={`left ${chatEnded ? 'fade-out' : ''}`}>
           <div className="video-container">
             <VideoComponent />
           </div>
           <div className="chat-stage">
-            <ChatStage />
+            <ChatStage onEndChat={handleEndChat} />
           </div>
         </div>
-        <div className="right">
+        <div className={`right ${chatEnded ? 'expanded' : ''}`}>
           <TranscriptComponent messages={messages} />
         </div>
       </div>
