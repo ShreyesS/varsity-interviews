@@ -6,6 +6,7 @@ import VideoComponent from './components-2/VideoComponent';
 import TranscriptComponent from './components-2/TranscriptComponent';
 import ExpandableComponent from './components-2/ExpandableComponent';
 import './App.css';
+import LiveAudioWaveform from './components-2/WaveformComponent';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -142,6 +143,9 @@ function App() {
         <div className="left">
           <div className="video-container">
             <VideoComponent />
+          </div>
+          <div className='waveform'>
+            <LiveAudioWaveform/>
           </div>
           <div className="chat-stage">
             <ChatStage setIsExpanded={setIsExpanded} />
